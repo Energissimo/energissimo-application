@@ -1,0 +1,14 @@
+<#include "manageenergissimo_tabs.html" />
+<@tabs2 tab="suggestion" />
+<@box>
+	<@boxHeader title='#i18n{energissimo.create_suggestion.title}' />
+	<@boxBody>
+    <@tform name='create_suggestion' action='jsp/admin/plugins/energissimo/ManageSuggestions.jsp'>
+        <@messages errors=errors />
+        <input type="hidden" id="id" name="id"/>
+        
+				
+				<@actionButtons button1Name="action_createSuggestion" button2Name="view_manageSuggestion"/>
+    </@tform>
+	</@boxBody>
+</@box>

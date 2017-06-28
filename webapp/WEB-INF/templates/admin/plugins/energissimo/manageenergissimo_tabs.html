@@ -1,0 +1,9 @@
+<#macro tabs2 tab >
+<@tabs>
+	<@listTabs>
+			<li <#if tab="suggestion">class="active"</#if>>
+				<a href="jsp/admin/plugins/energissimo/ManageSuggestions.jsp">#i18n{energissimo.manage_suggestions.pageTitle}</a>
+			</li>
+	</@listTabs>
+</@tabs>
+</#macro>
