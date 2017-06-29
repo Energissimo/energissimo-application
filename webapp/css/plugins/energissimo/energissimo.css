@@ -1,0 +1,21 @@
+.splash { padding: 9em 0 2em; 
+         background-color: #141d27; 
+         background-image: url(../../../images/skin/plugins/energissimo/background.jpg); 
+         background-size: cover; 
+         background-attachment: fixed; 
+         color: #fff; 
+         text-align: center;
+         font-size: 200%;
+}
+
+.splash .logo { width: 160px }
+.splash h1 { font-size: 3em }
+.splash #social { margin: 2em 0 }
+.splash .alert { margin: 2em 0 }
+.container { width: 100%;
+    margin: 0;
+    padding: 0 }
+.search { width: 50% }
+.body {
+    margin: 0;
+    padding: 0 }

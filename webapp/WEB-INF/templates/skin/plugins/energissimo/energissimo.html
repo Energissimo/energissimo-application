@@ -1,18 +1,29 @@
-<div class="jumbotron masthead">
+<div class="splash">
     <div class="container">
-        <h1>Energissimo</h1>
-        <p>Compilation et classification des données energétiques à l'usage des communes.</p>
-
         <div class="row">
-            <div class="col-md-03">
-                <div class="input-append">
-                    <form action="jsp/site/Portal.jsp">
-                        <input type="hidden" name="page" value="energissimo" />
-                        <input type="hidden" name="action" value="search" />
-                        <input class="span2" name="query" type="text" placeholder="Nom de la commune, code postal, ...">
-                        <@messages errors=errors />
-                        <button class="btn" type="submit">Rechercher</button>
-                    </form>
+            <div class="col-lg-12">
+                <div class="portlet ">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <img class="img-responsive"  src="images/local/skin/logo-lutece.svg" alt="" >
+                        </div>
+                        <div class="row col-md-6 col-md-offset-3">
+                            <h1>Energissimo</h1>
+                            <p>Compilation et classification des données energétiques à l'usage des communes.</p>
+
+                            <div class="row">
+                                <div class="col-md-03">
+                                        <form action="jsp/site/Portal.jsp">
+                                            <input type="hidden" name="page" value="energissimo" />
+                                            <input type="hidden" name="action" value="search" />
+                                            <input class="input-lg search" name="query" type="text" placeholder="Nom de la commune, code postal, ...">
+                                            <@messages errors=errors />
+                                            <button class="btn btn-danger btn-lg" type="submit">Rechercher</button>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
