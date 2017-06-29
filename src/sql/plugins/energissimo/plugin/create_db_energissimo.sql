@@ -19,3 +19,6 @@ CREATE TABLE energissimo_suggestion (
 id_suggestion int(6) NOT NULL,
 PRIMARY KEY (id_suggestion)
 );
+
+
+						

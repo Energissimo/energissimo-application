@@ -1,0 +1,8 @@
+<h1>Liste des communes trouvées</h1>
+
+
+<ul>    
+<#list municipalities_list as municipality>
+<li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=${municipality.id}"> ${municipality.name}</a></li>
+</#list>
+</ul>
