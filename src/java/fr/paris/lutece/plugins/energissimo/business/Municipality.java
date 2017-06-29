@@ -1,34 +1,20 @@
 package fr.paris.lutece.plugins.energissimo.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is the business class for the object Municipality
  */ 
 public class Municipality
 {
     // Variables declarations 
-    private int _nIdMunicipality;
     private String _strName;
     private String _strZipcode;
     private String _strData;
+    private List<IrisData> _listIrisData = new ArrayList<>();
     
     
-       /**
-        * Returns the IdMunicipality
-        * @return The IdMunicipality
-        */ 
-    public int getId()
-    {
-        return _nIdMunicipality;
-    }
-    
-       /**
-        * Sets the IdMunicipality
-        * @param nIdMunicipality The IdMunicipality
-        */ 
-    public void setId( int nIdMunicipality )
-    {
-        _nIdMunicipality = nIdMunicipality;
-    }
     
        /**
         * Returns the Name
@@ -83,4 +69,28 @@ public class Municipality
     {
         _strData = strData;
     }
+
+    @Override
+    public String toString() 
+    {
+        return _strZipcode + " " + _strName;
+    }
+
+    /**
+     * @return the _listIrisData
+     */
+    public List<IrisData> getIris() 
+    {
+        return _listIrisData;
+    }
+
+    /**
+     * @param _listIrisData the _listIrisData to set
+     */
+    public void addIrisData( IrisData irisData) 
+    {
+        _listIrisData.add(irisData);
+    }
+    
+    
  }

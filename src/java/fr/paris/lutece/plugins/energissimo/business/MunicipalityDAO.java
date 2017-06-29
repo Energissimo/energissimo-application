@@ -11,134 +11,15 @@ import java.util.List;
 public final class MunicipalityDAO {
 
     // Constants
-    private static final String SQL_QUERY_NEW_PK = "SELECT max( id_municipality ) FROM energissimo_municipality";
-    private static final String SQL_QUERY_SELECT = "SELECT id_municipality, name, zipcode, data FROM energissimo_municipality WHERE id_municipality = ?";
-    private static final String SQL_QUERY_INSERT = "INSERT INTO energissimo_municipality ( id_municipality, name, zipcode, data ) VALUES ( ?, ?, ?, ? ) ";
-    private static final String SQL_QUERY_DELETE = "DELETE FROM energissimo_municipality WHERE id_municipality = ? ";
-    private static final String SQL_QUERY_UPDATE = "UPDATE energissimo_municipality SET id_municipality = ?, name = ?, zipcode = ?, data = ? WHERE id_municipality = ?";
-    private static final String SQL_QUERY_SELECTALL = "SELECT id_municipality, name, zipcode, data FROM energissimo_municipality";
-    private static final String SQL_QUERY_SELECT_BY_NAME = "SELECT id_municipality, name, zipcode, data FROM energissimo_municipality WHERE name LIKE ? ";
-    private static final String SQL_QUERY_SELECT_BY_ZIPCODE = "SELECT id_municipality, name, zipcode, data FROM energissimo_municipality WHERE zipcode = ?";
+    private static final String SQL_QUERY_SELECT_BY_NAME = "SELECT name, zipcode FROM energissimo_municipality WHERE name LIKE ? ";
+    	private static final String SQL_QUERY_SELECT_BY_ZIPCODE = "SELECT zipcode, name, code_iris"
+                + " data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, "
+                + " data11, data12, data13, data14, data15, data16, data17, data18, data19, data20, "
+                + " data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, "
+                + " data31, data32, data33 "
+                + " FROM energissimo_iris_data WHERE zipcode = ?";
 
-    
-    /**
-     * Generates a new primary key
-     *
-     * @return The new primary key
-     */
-    public int newPrimaryKey() {
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_NEW_PK);
-        daoUtil.executeQuery();
-
-        int nKey;
-
-        daoUtil.next();
-        
-        nKey = daoUtil.getInt(1) + 1;
-        daoUtil.free();
-
-        return nKey;
-    }
-
-    /**
-     * Insert a new record in the table.
-     *
-     * @param municipality instance of the Municipality object to insert
-     */
-    public void insert(Municipality municipality) {
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_INSERT);
-
-        municipality.setId(newPrimaryKey());
-
-        daoUtil.setInt(1, municipality.getId());
-        daoUtil.setString(2, municipality.getName());
-        daoUtil.setString(3, municipality.getZipcode());
-        daoUtil.setString(4, municipality.getData());
-
-        daoUtil.executeUpdate();
-        daoUtil.free();
-    }
-
-    /**
-     * Load the data of the municipality from the table
-     *
-     * @param nId The identifier of the municipality
-     * @return the instance of the Municipality
-     */
-    public Municipality load(int nId) {
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_SELECT);
-        daoUtil.setInt(1, nId);
-        daoUtil.executeQuery();
-
-        Municipality municipality = null;
-
-        if (daoUtil.next()) {
-            municipality = new Municipality();
-
-            municipality.setId(daoUtil.getInt(1));
-            municipality.setName(daoUtil.getString(2));
-            municipality.setZipcode(daoUtil.getString(3));
-            municipality.setData(daoUtil.getString(4));
-        }
-
-        daoUtil.free();
-        return municipality;
-    }
-
-    /**
-     * Delete a record from the table
-     *
-     * @param nMunicipalityId The identifier of the municipality
-     */
-    public void delete(int nMunicipalityId) {
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_DELETE);
-        daoUtil.setInt(1, nMunicipalityId);
-        daoUtil.executeUpdate();
-        daoUtil.free();
-    }
-
-    /**
-     * Update the record in the table
-     *
-     * @param municipality The reference of the municipality
-     */
-    public void store(Municipality municipality) {
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_UPDATE);
-
-        daoUtil.setInt(1, municipality.getId());
-        daoUtil.setString(2, municipality.getName());
-        daoUtil.setString(3, municipality.getZipcode());
-        daoUtil.setString(4, municipality.getData());
-        daoUtil.setInt(5, municipality.getId());
-
-        daoUtil.executeUpdate();
-        daoUtil.free();
-    }
-
-    /**
-     * Load the data of all the municipalitys and returns them as a list
-     *
-     * @return The list which contains the data of all the municipalitys
-     */
-    public List<Municipality> selectMunicipalitysList() {
-        List<Municipality> municipalityList = new ArrayList<>();
-        DAOUtil daoUtil = new DAOUtil(SQL_QUERY_SELECTALL);
-        daoUtil.executeQuery();
-
-        while (daoUtil.next()) {
-            Municipality municipality = new Municipality();
-
-            municipality.setId(daoUtil.getInt(1));
-            municipality.setName(daoUtil.getString(2));
-            municipality.setZipcode(daoUtil.getString(3));
-            municipality.setData(daoUtil.getString(4));
-
-            municipalityList.add(municipality);
-        }
-
-        daoUtil.free();
-        return municipalityList;
-    }
+        private static final int NUM_FIELD = 32;
 
     List<Municipality> selectByName(String strName) 
     {
@@ -151,10 +32,8 @@ public final class MunicipalityDAO {
         while (daoUtil.next()) {
             Municipality municipality = new Municipality();
 
-            municipality.setId(daoUtil.getInt(1));
-            municipality.setName(daoUtil.getString(2));
-            municipality.setZipcode(daoUtil.getString(3));
-            municipality.setData(daoUtil.getString(4));
+            municipality.setName(daoUtil.getString(1));
+            municipality.setZipcode(daoUtil.getString(2));
 
             municipalityList.add(municipality);
         }
@@ -163,26 +42,40 @@ public final class MunicipalityDAO {
         return municipalityList;
     }
 
-    List<Municipality> selectByZipCode(String strZipCode ) 
+    
+        
+    public Municipality selectByZipCode(String strZipCode ) 
     {
-        List<Municipality> municipalityList = new ArrayList<>();
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT_BY_ZIPCODE );
         daoUtil.setString( 1 , strZipCode  );
         daoUtil.executeQuery();
 
+        Municipality municipality = null;
         while (daoUtil.next()) {
-            Municipality municipality = new Municipality();
+            int nIndex = 1;
+            if( municipality == null )
+            {
+                municipality = new Municipality();
+                municipality.setZipcode( daoUtil.getString( nIndex++ ) );
+                municipality.setName( daoUtil.getString( nIndex++ ));
+            }
+            
+            IrisData irisData = new IrisData();
 
-            municipality.setId(daoUtil.getInt(1));
-            municipality.setName(daoUtil.getString(2));
-            municipality.setZipcode(daoUtil.getString(3));
-            municipality.setData(daoUtil.getString(4));
+            irisData.setCodeIris( daoUtil.getString(nIndex++));
+            String[] data = new String[NUM_FIELD];
+            for( int i = 0 ; i < NUM_FIELD ; i++ )
+            {
+                data[i] = daoUtil.getString( nIndex++ );
+            }
+            irisData.setData( data );
+            municipality.addIrisData(irisData);
 
-            municipalityList.add(municipality);
         }
 
         daoUtil.free();
-        return municipalityList;
+        return municipality;
     }
+
 
 }

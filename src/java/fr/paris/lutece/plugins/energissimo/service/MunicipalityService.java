@@ -21,13 +21,29 @@ public class MunicipalityService
 
     public static List<Municipality> getMunicipalities( String strQuery )
     {
+        List<Municipality> list;
+        
         Matcher zipMatcher = zipPattern.matcher( strQuery );
         if (zipMatcher.matches()) 
         {
-            return MunicipalityHome.findByZipCode( strQuery );
+            list = MunicipalityHome.findByZipCode( strQuery );
         }
-
-        return MunicipalityHome.findByName(strQuery);
+        else
+        {
+            list = MunicipalityHome.findByName(strQuery);
+        }
+        
+        if (list.size() == 1 )
+        {
+            Municipality m = list.get(0);
+            fillData( m );
+            System.out.println( m );
+        }
+        return list;
     }
-    
+
+    private static void fillData(Municipality m) 
+    {
+    }
+       
 }

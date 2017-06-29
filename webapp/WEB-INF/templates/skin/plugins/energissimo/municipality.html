@@ -2,11 +2,14 @@
     <div class="col-md-10 col-md-offset-1">
         <h1>${municipality.name} &nbsp; <small>[${municipality.zipcode}]</small></h1>
     </div>
+    <#list municipality.iris as iris>
+    
     <div class="col-md-4">
         <div class="panel color-data">
         <h2><span class="fa fa-database"></span> &nbsp; Les données</h2>
+        <strong>IRIS  : ${iris.data[0]}</strong>
         <ul>
-            <li>Consommation électrique : 30 MWh</li> 
+            <li>Consommation électrique : ${iris.data[6]} MWh</li> 
             <li>Consommation gaz : 30 MWh</li>
             <li>Production bio gaz : 1 MWh</li> 
             <li>Production électrique renouvelable : 5 MWh</li> 
@@ -36,5 +39,6 @@
         </ul>
         </div>
     </div>
-
+    
+    </#list>
 </div>

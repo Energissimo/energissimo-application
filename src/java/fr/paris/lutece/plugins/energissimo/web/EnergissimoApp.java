@@ -95,7 +95,7 @@ public class EnergissimoApp extends MVCApplication
             case 1 :
                 Municipality m = _searchResults.get(0);
                 Map<String, String> parameters = new HashMap<>(); 
-                parameters.put( PARAMETER_ID , String.valueOf( m.getId() ));
+                parameters.put( PARAMETER_ID ,  m.getZipcode() );
                 return redirect( request , VIEW_MUNICIPALITY , parameters );
                 
             default :
@@ -115,8 +115,7 @@ public class EnergissimoApp extends MVCApplication
     public XPage viewMunicipality( HttpServletRequest request )
     {
         String strId = request.getParameter( PARAMETER_ID );
-        int nId = Integer.parseInt( strId );
-        Municipality m = MunicipalityHome.findByPrimaryKey(nId);
+        Municipality m = MunicipalityHome.findByZipCode( strId ).get(0);  //FIXME
         Map<String,Object> model = getModel();
         model.put( MARK_MUNICIPALITY , m );
         return getXPage( TEMPLATE_MUNICIPALITY, request.getLocale(  ) , model );
