@@ -1,1 +1,40 @@
-<h1>${municipality.name}</h1>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h1>${municipality.name} &nbsp; <small>[${municipality.zipcode}]</small></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="panel color-data">
+        <h2><span class="fa fa-database"></span> &nbsp; Les données</h2>
+        <ul>
+            <li>Consommation électrique : 30 MWh</li> 
+            <li>Consommation gaz : 30 MWh</li>
+            <li>Production bio gaz : 1 MWh</li> 
+            <li>Production électrique renouvelable : 5 MWh</li> 
+            <li>Ensoleillement :  1000 heures/an</li>
+            <li>Vent moyen : 25 km/h</li>
+        </ul>
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <div class="panel color-recommendation">
+        <h2><span class="fa fa-diamond"></span> Recommendations</h2>
+        <p>
+            Cette commune présente des similarités avec d'autres. Voici la recommendation proposée à ce groupe de collectivités :
+        </p>
+        <ul>
+            <li>Développer le photoltaïque pour profiter de l'ensoleillement. </li>
+            <li>Augmenter la production de bio gaz</li>
+        </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel color-similar">
+        <h2><span class="fa fa-handshake-o"></span> &nbsp;Communes similaires</h2>
+        <ul>    
+            <li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=1"> Paris 12</a></li>
+            <li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=2"> Paris 13</a></li>
+        </ul>
+        </div>
+    </div>
+
+</div>

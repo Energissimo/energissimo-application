@@ -19,3 +19,22 @@
 .body {
     margin: 0;
     padding: 0 }
+.panel {
+    margin: 2em;
+    padding: 3em;
+    border: 5px;
+    border-color: #999;
+    min-height: 300px;
+}
+    
+.color-data {
+    background-color: #ddf
+}
+
+.color-recommendation {
+    background-color: #fdd
+}
+
+.color-similar {
+    background-color: #dfd
+}
