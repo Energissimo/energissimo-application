@@ -1,19 +1,30 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <h1>${municipality.name} &nbsp; <small>[${municipality.zipcode}]</small></h1>
+        <h1>${municipality.name!''} &nbsp; <small>[${municipality.zipcode!''}]</small></h1>
     </div>
     <#list municipality.iris as iris>
-    
+    <div class="col-md-8 col-md-offset-2">
+        <h3>IRIS  : ${iris.data[0]} <small> code : ${iris.codeIris} </small>
+        <a class="btn btn-primary pull-right" href=" https://www.geoportail.gouv.fr/carte?c=${iris.data[3]},${iris.data[4]}&z=16&l0=ORTHOIMAGERY.ORTHOPHOTOS::GEOPORTAIL:OGC:WMTS(0.41796875)&l1=STATISTICALUNITS.IRISGE::GEOPORTAIL:OGC:WMS(1)&permalink=yes" >
+            <span class="fa fa-map-marker"></span> &nbsp; Accès à la carte
+        </a>
+        </h3>
+    </div>
     <div class="col-md-4">
         <div class="panel color-data">
         <h2><span class="fa fa-database"></span> &nbsp; Les données</h2>
-        <strong>IRIS  : ${iris.data[0]}</strong>
         <ul>
-            <li>Consommation électrique : ${iris.data[6]} MWh</li> 
+            <li>Conso. électrique résidentielle : ${iris.data[6]} MWh</li> 
+            <li>Conso. électrique agricole : ${iris.data[9]} MWh</li> 
+            <li>Conso. électrique industrielle : ${iris.data[11]} MWh</li> 
+            <li>Conso. électrique tertiaire : ${iris.data[13]} MWh</li> 
             <li>Consommation gaz : 30 MWh</li>
-            <li>Production bio gaz : 1 MWh</li> 
-            <li>Production électrique renouvelable : 5 MWh</li> 
-            <li>Ensoleillement :  1000 heures/an</li>
+            <li>Production PV : ${iris.data[20]} MWh</li> 
+            <li>Production éolien : ${iris.data[26]} MWh</li> 
+            <li>Production électrique biomasse : ${iris.data[28]} MWh</li>
+            <li>Population :  ${iris.data[31]} habitants</li>
+            <li>Revenu médian : ${iris.data[33]} € </li>
+            <li>Ensoleillement :  ${iris.data[34]} heures/an</li>
             <li>Vent moyen : 25 km/h</li>
         </ul>
         </div>
