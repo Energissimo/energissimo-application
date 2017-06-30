@@ -11,7 +11,7 @@ import java.util.List;
 public final class MunicipalityDAO {
 
     // Constants
-    private static final String SQL_QUERY_SELECT_BY_NAME = "SELECT name, zipcode FROM energissimo_municipality WHERE name LIKE ? ";
+    private static final String SQL_QUERY_SELECT_BY_NAME = "SELECT DISTINCT name, zipcode FROM energissimo_iris_data WHERE name LIKE ? ";
     	private static final String SQL_QUERY_SELECT_BY_ZIPCODE = "SELECT zipcode, name, code_iris, "
                 + " data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, "
                 + " data11, data12, data13, data14, data15, data16, data17, data18, data19, data20, "

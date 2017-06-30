@@ -24,7 +24,11 @@ public final class MunicipalityHome
     public static List<Municipality> findByZipCode( String strZipCode )
     {
         List<Municipality> list = new ArrayList<>();
-        list.add( _dao.selectByZipCode( strZipCode ) );
+        Municipality m = _dao.selectByZipCode( strZipCode );
+        if( m != null )
+        {
+            list.add( m );
+        }
         return list;
     }   
 
