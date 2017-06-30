@@ -5,6 +5,7 @@
  */
 package fr.paris.lutece.plugins.energissimo.service;
 
+import fr.paris.lutece.plugins.energissimo.business.IrisData;
 import fr.paris.lutece.plugins.energissimo.business.Municipality;
 import fr.paris.lutece.plugins.energissimo.business.MunicipalityHome;
 import java.util.List;
@@ -42,8 +43,26 @@ public class MunicipalityService
         return list;
     }
 
-    private static void fillData(Municipality m) 
+    public static void fillData(Municipality m) 
     {
+        List<IrisData> list =  m.getIris();
+        
+        for( int j = 0 ; j < list.size() ; j++  )
+        {
+            IrisData iris = list.get(j);
+            for( int i = 0 ; i < 3 ; i++ )
+            {
+                String codeIris = iris.getData()[47 + i];
+                codeIris = codeIris.replace("\r", "" );
+                System.out.println( "code iris : " + codeIris );
+                Municipality similar = MunicipalityHome.getSimilar( codeIris );
+                System.out.println( "Similar : " + similar );
+                if( similar != null )
+                {
+                    iris.addSimilars( similar );
+                }
+            }
+        }
     }
        
 }

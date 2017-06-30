@@ -73,7 +73,13 @@ public class Municipality
     @Override
     public String toString() 
     {
-        return _strZipcode + " " + _strName;
+        StringBuilder sb = new StringBuilder( _strZipcode + " " + _strName);
+        for( IrisData iris : _listIrisData )
+        {
+            sb.append(  "\n Iris : " + iris.getCodeIris() );
+           
+        }
+        return sb.toString();
     }
 
     /**

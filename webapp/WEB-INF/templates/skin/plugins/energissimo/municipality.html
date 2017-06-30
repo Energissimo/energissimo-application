@@ -18,7 +18,10 @@
             <li>Conso. électrique agricole : ${iris.data[9]} MWh</li> 
             <li>Conso. électrique industrielle : ${iris.data[11]} MWh</li> 
             <li>Conso. électrique tertiaire : ${iris.data[13]} MWh</li> 
-            <li>Consommation gaz : 30 MWh</li>
+            <li>Conso. gaz résidentielle : ${iris.data[40]} MWh</li> 
+            <li>Conso. gaz agricole : ${iris.data[43]} MWh</li> 
+            <li>Conso. gaz industrielle : ${iris.data[42]} MWh</li> 
+            <li>Conso. gaz tertiaire : ${iris.data[41]} MWh</li> 
             <li>Production PV : ${iris.data[20]} MWh</li> 
             <li>Production éolien : ${iris.data[26]} MWh</li> 
             <li>Production électrique biomasse : ${iris.data[28]} MWh</li>
@@ -45,8 +48,9 @@
         <div class="panel color-similar">
         <h2><span class="fa fa-handshake-o"></span> &nbsp;Communes similaires</h2>
         <ul>    
-            <li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=1"> Paris 12</a></li>
-            <li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=2"> Paris 13</a></li>
+            <#list iris.similars as similar>
+            <li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=${similar.zipcode}">${similar.name}</a></li>
+            </#list>
         </ul>
         </div>
     </div>

@@ -32,4 +32,9 @@ public final class MunicipalityHome
         return list;
     }   
 
+    public static Municipality getSimilar(String strIrisCode ) 
+    {
+        return _dao.selectByIris( strIrisCode );
+    }
+
 }

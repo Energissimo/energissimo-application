@@ -5,6 +5,9 @@
  */
 package fr.paris.lutece.plugins.energissimo.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author pierre
@@ -13,6 +16,7 @@ public class IrisData
 {
     private String codeIris;
     private String[] data;
+    private List<Municipality> similars = new ArrayList<>();
 
     /**
      * @return the codeIris
@@ -40,5 +44,23 @@ public class IrisData
      */
     public void setData(String[] data) {
         this.data = data;
+    }
+
+    /**
+     * @return the similars
+     */
+    public List<Municipality> getSimilars() {
+        
+        return similars;
+    }
+
+    /**
+     * @param similars the similars to set
+     */
+    public void addSimilars( Municipality m) {
+        System.out.println( "before" + similars );
+        similars.add(m);
+                System.out.println( "after" + similars );
+
     }
 }

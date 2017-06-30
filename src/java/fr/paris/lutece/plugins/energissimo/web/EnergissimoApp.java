@@ -115,7 +115,8 @@ public class EnergissimoApp extends MVCApplication
     public XPage viewMunicipality( HttpServletRequest request )
     {
         String strId = request.getParameter( PARAMETER_ID );
-        Municipality m = MunicipalityHome.findByZipCode( strId ).get(0);  //FIXME
+        Municipality m = MunicipalityHome.findByZipCode( strId ).get(0);  // FIXME
+        MunicipalityService.fillData(m);
         Map<String,Object> model = getModel();
         model.put( MARK_MUNICIPALITY , m );
         return getXPage( TEMPLATE_MUNICIPALITY, request.getLocale(  ) , model );
