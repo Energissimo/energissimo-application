@@ -1,8 +1,15 @@
-<h1>Liste des communes trouvées</h1>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
 
-
-<ul>    
-<#list municipalities_list as municipality>
-<li><a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=${municipality.zipcode}"> ${municipality.name}</a></li>
-</#list>
-</ul>
+        <h1>Liste des communes trouvées</h1>
+        <table class="table table-condensed table-striped">
+            <#list municipalities_list as municipality>
+            <tr>
+                <td>
+                    <a href="jsp/site/Portal.jsp?page=energissimo&view=municipality&id=${municipality.zipcode}"> ${municipality.name}</a>
+                </td>
+            </tr>
+            </#list>
+        </table>
+    </div>
+</div>
