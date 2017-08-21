@@ -57,21 +57,23 @@ public final class SuggestionDAO implements ISuggestionDAO
 
     /**
      * Generates a new primary key
-     * @param plugin The Plugin
+     * 
+     * @param plugin
+     *            The Plugin
      * @return The new primary key
      */
-    public int newPrimaryKey( Plugin plugin)
+    public int newPrimaryKey( Plugin plugin )
     {
-        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK , plugin  );
+        DAOUtil daoUtil = new DAOUtil( SQL_QUERY_NEW_PK, plugin );
         daoUtil.executeQuery( );
         int nKey = 1;
 
-        if( daoUtil.next( ) )
+        if ( daoUtil.next( ) )
         {
             nKey = daoUtil.getInt( 1 ) + 1;
         }
 
-        daoUtil.free();
+        daoUtil.free( );
         return nKey;
     }
 
@@ -84,8 +86,8 @@ public final class SuggestionDAO implements ISuggestionDAO
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_INSERT, plugin );
         suggestion.setId( newPrimaryKey( plugin ) );
         int nIndex = 1;
-        
-        daoUtil.setInt( nIndex++ , suggestion.getId( ) );
+
+        daoUtil.setInt( nIndex++, suggestion.getId( ) );
 
         daoUtil.executeUpdate( );
         daoUtil.free( );
@@ -98,15 +100,15 @@ public final class SuggestionDAO implements ISuggestionDAO
     public Suggestion load( int nKey, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECT, plugin );
-        daoUtil.setInt( 1 , nKey );
+        daoUtil.setInt( 1, nKey );
         daoUtil.executeQuery( );
         Suggestion suggestion = null;
 
         if ( daoUtil.next( ) )
         {
-            suggestion = new Suggestion();
+            suggestion = new Suggestion( );
             int nIndex = 1;
-            
+
             suggestion.setId( daoUtil.getInt( nIndex++ ) );
         }
 
@@ -121,7 +123,7 @@ public final class SuggestionDAO implements ISuggestionDAO
     public void delete( int nKey, Plugin plugin )
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_DELETE, plugin );
-        daoUtil.setInt( 1 , nKey );
+        daoUtil.setInt( 1, nKey );
         daoUtil.executeUpdate( );
         daoUtil.free( );
     }
@@ -134,9 +136,9 @@ public final class SuggestionDAO implements ISuggestionDAO
     {
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin );
         int nIndex = 1;
-        
-        daoUtil.setInt( nIndex++ , suggestion.getId( ) );
-        daoUtil.setInt( nIndex , suggestion.getId( ) );
+
+        daoUtil.setInt( nIndex++, suggestion.getId( ) );
+        daoUtil.setInt( nIndex, suggestion.getId( ) );
 
         daoUtil.executeUpdate( );
         daoUtil.free( );
@@ -148,15 +150,15 @@ public final class SuggestionDAO implements ISuggestionDAO
     @Override
     public List<Suggestion> selectSuggestionsList( Plugin plugin )
     {
-        List<Suggestion> suggestionList = new ArrayList<Suggestion>(  );
+        List<Suggestion> suggestionList = new ArrayList<Suggestion>( );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
-            Suggestion suggestion = new Suggestion(  );
+            Suggestion suggestion = new Suggestion( );
             int nIndex = 1;
-            
+
             suggestion.setId( daoUtil.getInt( nIndex++ ) );
 
             suggestionList.add( suggestion );
@@ -165,7 +167,7 @@ public final class SuggestionDAO implements ISuggestionDAO
         daoUtil.free( );
         return suggestionList;
     }
-    
+
     /**
      * {@inheritDoc }
      */
@@ -174,9 +176,9 @@ public final class SuggestionDAO implements ISuggestionDAO
     {
         List<Integer> suggestionList = new ArrayList<Integer>( );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL_ID, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
             suggestionList.add( daoUtil.getInt( 1 ) );
         }
@@ -184,20 +186,20 @@ public final class SuggestionDAO implements ISuggestionDAO
         daoUtil.free( );
         return suggestionList;
     }
-    
+
     /**
      * {@inheritDoc }
      */
     @Override
     public ReferenceList selectSuggestionsReferenceList( Plugin plugin )
     {
-        ReferenceList suggestionList = new ReferenceList();
+        ReferenceList suggestionList = new ReferenceList( );
         DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL, plugin );
-        daoUtil.executeQuery(  );
+        daoUtil.executeQuery( );
 
-        while ( daoUtil.next(  ) )
+        while ( daoUtil.next( ) )
         {
-            suggestionList.addItem( daoUtil.getInt( 1 ) , daoUtil.getString( 2 ) );
+            suggestionList.addItem( daoUtil.getInt( 1 ), daoUtil.getString( 2 ) );
         }
 
         daoUtil.free( );

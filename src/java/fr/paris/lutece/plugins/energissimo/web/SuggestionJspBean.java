@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -31,6 +31,7 @@
  *
  * License 1.0
  */
+
 package fr.paris.lutece.plugins.energissimo.web;
 
 import fr.paris.lutece.plugins.energissimo.business.Suggestion;
@@ -92,20 +93,22 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     private static final String INFO_SUGGESTION_CREATED = "energissimo.info.suggestion.created";
     private static final String INFO_SUGGESTION_UPDATED = "energissimo.info.suggestion.updated";
     private static final String INFO_SUGGESTION_REMOVED = "energissimo.info.suggestion.removed";
-    
+
     // Session variable to store working values
     private Suggestion _suggestion;
-    
+
     /**
      * Build the Manage View
-     * @param request The HTTP request
+     * 
+     * @param request
+     *            The HTTP request
      * @return The page
      */
     @View( value = VIEW_MANAGE_SUGGESTIONS, defaultView = true )
     public String getManageSuggestions( HttpServletRequest request )
     {
         _suggestion = null;
-        List<Suggestion> listSuggestions = SuggestionHome.getSuggestionsList(  );
+        List<Suggestion> listSuggestions = SuggestionHome.getSuggestionsList( );
         Map<String, Object> model = getPaginatedListModel( request, MARK_SUGGESTION_LIST, listSuggestions, JSP_MANAGE_SUGGESTIONS );
 
         return getPage( PROPERTY_PAGE_TITLE_MANAGE_SUGGESTIONS, TEMPLATE_MANAGE_SUGGESTIONS, model );
@@ -114,15 +117,16 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     /**
      * Returns the form to create a suggestion
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the html code of the suggestion form
      */
     @View( VIEW_CREATE_SUGGESTION )
     public String getCreateSuggestion( HttpServletRequest request )
     {
-        _suggestion = ( _suggestion != null ) ? _suggestion : new Suggestion(  );
+        _suggestion = ( _suggestion != null ) ? _suggestion : new Suggestion( );
 
-        Map<String, Object> model = getModel(  );
+        Map<String, Object> model = getModel( );
         model.put( MARK_SUGGESTION, _suggestion );
 
         return getPage( PROPERTY_PAGE_TITLE_CREATE_SUGGESTION, TEMPLATE_CREATE_SUGGESTION, model );
@@ -131,7 +135,8 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     /**
      * Process the data capture form of a new suggestion
      *
-     * @param request The Http Request
+     * @param request
+     *            The Http Request
      * @return The Jsp URL of the process result
      */
     @Action( ACTION_CREATE_SUGGESTION )
@@ -146,16 +151,16 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
         }
 
         SuggestionHome.create( _suggestion );
-        addInfo( INFO_SUGGESTION_CREATED, getLocale(  ) );
+        addInfo( INFO_SUGGESTION_CREATED, getLocale( ) );
 
         return redirectView( request, VIEW_MANAGE_SUGGESTIONS );
     }
 
     /**
-     * Manages the removal form of a suggestion whose identifier is in the http
-     * request
+     * Manages the removal form of a suggestion whose identifier is in the http request
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the html code to confirm
      */
     @Action( ACTION_CONFIRM_REMOVE_SUGGESTION )
@@ -165,7 +170,7 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
         UrlItem url = new UrlItem( getActionUrl( ACTION_REMOVE_SUGGESTION ) );
         url.addParameter( PARAMETER_ID_SUGGESTION, nId );
 
-        String strMessageUrl = AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_REMOVE_SUGGESTION, url.getUrl(  ), AdminMessage.TYPE_CONFIRMATION );
+        String strMessageUrl = AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_REMOVE_SUGGESTION, url.getUrl( ), AdminMessage.TYPE_CONFIRMATION );
 
         return redirect( request, strMessageUrl );
     }
@@ -173,7 +178,8 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     /**
      * Handles the removal form of a suggestion
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return the jsp URL to display the form to manage suggestions
      */
     @Action( ACTION_REMOVE_SUGGESTION )
@@ -181,7 +187,7 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     {
         int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_SUGGESTION ) );
         SuggestionHome.remove( nId );
-        addInfo( INFO_SUGGESTION_REMOVED, getLocale(  ) );
+        addInfo( INFO_SUGGESTION_REMOVED, getLocale( ) );
 
         return redirectView( request, VIEW_MANAGE_SUGGESTIONS );
     }
@@ -189,7 +195,8 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     /**
      * Returns the form to update info about a suggestion
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return The HTML form to update info
      */
     @View( VIEW_MODIFY_SUGGESTION )
@@ -197,12 +204,12 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     {
         int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_SUGGESTION ) );
 
-        if ( _suggestion == null || ( _suggestion.getId(  ) != nId ))
+        if ( _suggestion == null || ( _suggestion.getId( ) != nId ) )
         {
             _suggestion = SuggestionHome.findByPrimaryKey( nId );
         }
 
-        Map<String, Object> model = getModel(  );
+        Map<String, Object> model = getModel( );
         model.put( MARK_SUGGESTION, _suggestion );
 
         return getPage( PROPERTY_PAGE_TITLE_MODIFY_SUGGESTION, TEMPLATE_MODIFY_SUGGESTION, model );
@@ -211,7 +218,8 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
     /**
      * Process the change form of a suggestion
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
      * @return The Jsp URL of the process result
      */
     @Action( ACTION_MODIFY_SUGGESTION )
@@ -226,7 +234,7 @@ public class SuggestionJspBean extends ManageEnergissimoJspBean
         }
 
         SuggestionHome.update( _suggestion );
-        addInfo( INFO_SUGGESTION_UPDATED, getLocale(  ) );
+        addInfo( INFO_SUGGESTION_UPDATED, getLocale( ) );
 
         return redirectView( request, VIEW_MANAGE_SUGGESTIONS );
     }

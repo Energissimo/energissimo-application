@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -31,6 +31,7 @@
  *
  * License 1.0
  */
+
 package fr.paris.lutece.plugins.energissimo.web;
 
 import fr.paris.lutece.plugins.energissimo.business.Municipality;
@@ -50,77 +51,78 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * This class provides a simple implementation of an XPage
  */
-@Controller( xpageName = "energissimo" , pageTitleI18nKey = "energissimo.xpage.energissimo.pageTitle" , pagePathI18nKey = "energissimo.xpage.energissimo.pagePathLabel" )
+@Controller( xpageName = "energissimo", pageTitleI18nKey = "energissimo.xpage.energissimo.pageTitle", pagePathI18nKey = "energissimo.xpage.energissimo.pagePathLabel" )
 public class EnergissimoApp extends MVCApplication
 {
     private static final String TEMPLATE_XPAGE = "/skin/plugins/energissimo/energissimo.html";
-    private static final String TEMPLATE_MUNICIPALITY = "/skin/plugins/energissimo/municipality.html"; 
-    private static final String TEMPLATE_LIST = "/skin/plugins/energissimo/list.html"; 
+    private static final String TEMPLATE_MUNICIPALITY = "/skin/plugins/energissimo/municipality.html";
+    private static final String TEMPLATE_LIST = "/skin/plugins/energissimo/list.html";
 
     private static final String MARK_MUNICIPALITIES = "municipalities_list";
-    private static final String MARK_MUNICIPALITY = "municipality"; 
+    private static final String MARK_MUNICIPALITY = "municipality";
     private static final String VIEW_HOME = "home";
     private static final String VIEW_MUNICIPALITY = "municipality";
     private static final String VIEW_LIST = "list";
-    
+
     private static final String ACTION_SEARCH = "search";
     private static final String PARAMETER_QUERY = "query";
     private static final String PARAMETER_ID = "id";
 
     private List<Municipality> _searchResults;
-    
+
     /**
-     * Returns the content of the page energissimo. 
-     * @param request The HTTP request
+     * Returns the content of the page energissimo.
+     * 
+     * @param request
+     *            The HTTP request
      * @return The view
      */
-    @View( value = VIEW_HOME , defaultView = true )
+    @View( value = VIEW_HOME, defaultView = true )
     public XPage viewHome( HttpServletRequest request )
     {
-        Map<String,Object> model = getModel();
-        
-        return getXPage( TEMPLATE_XPAGE, request.getLocale(  ) , model  );
+        Map<String, Object> model = getModel( );
+
+        return getXPage( TEMPLATE_XPAGE, request.getLocale( ), model );
     }
-    
+
     @Action( ACTION_SEARCH )
     public XPage doSearch( HttpServletRequest request )
     {
         String strQuery = request.getParameter( PARAMETER_QUERY );
-        _searchResults = MunicipalityService.getMunicipalities(strQuery);
-        switch( _searchResults.size() )
+        _searchResults = MunicipalityService.getMunicipalities( strQuery );
+        switch( _searchResults.size( ) )
         {
-            case 0 :
+            case 0:
                 addError( "Désolé. Aucune commune trouvée !" );
-                return redirectView(request, VIEW_HOME);
-            case 1 :
-                Municipality m = _searchResults.get(0);
-                Map<String, String> parameters = new HashMap<>(); 
-                parameters.put( PARAMETER_ID ,  m.getZipcode() );
-                return redirect( request , VIEW_MUNICIPALITY , parameters );
-                
-            default :
-                return redirectView( request , VIEW_LIST );
+                return redirectView( request, VIEW_HOME );
+            case 1:
+                Municipality m = _searchResults.get( 0 );
+                Map<String, String> parameters = new HashMap<>( );
+                parameters.put( PARAMETER_ID, m.getZipcode( ) );
+                return redirect( request, VIEW_MUNICIPALITY, parameters );
+
+            default:
+                return redirectView( request, VIEW_LIST );
         }
     }
-    
+
     @View( VIEW_LIST )
     public XPage viewHList( HttpServletRequest request )
     {
-        Map<String,Object> model = getModel();
+        Map<String, Object> model = getModel( );
         model.put( MARK_MUNICIPALITIES, _searchResults );
-        return getXPage( TEMPLATE_LIST, request.getLocale(  ) , model );
+        return getXPage( TEMPLATE_LIST, request.getLocale( ), model );
     }
-    
+
     @View( VIEW_MUNICIPALITY )
     public XPage viewMunicipality( HttpServletRequest request )
     {
         String strId = request.getParameter( PARAMETER_ID );
-        Municipality m = MunicipalityHome.findByZipCode( strId ).get(0);  // FIXME
-        MunicipalityService.fillData(m);
-        Map<String,Object> model = getModel();
-        model.put( MARK_MUNICIPALITY , m );
-        return getXPage( TEMPLATE_MUNICIPALITY, request.getLocale(  ) , model );
+        Municipality m = MunicipalityHome.findByZipCode( strId ).get( 0 ); // FIXME
+        MunicipalityService.fillData( m );
+        Map<String, Object> model = getModel( );
+        model.put( MARK_MUNICIPALITY, m );
+        return getXPage( TEMPLATE_MUNICIPALITY, request.getLocale( ), model );
     }
-    
-    
+
 }

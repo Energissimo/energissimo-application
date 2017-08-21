@@ -1,105 +1,153 @@
+/*
+ * Copyright (c) 2017 Energissimo authors
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  1. Redistributions of source code must retain the above copyright notice
+ *     and the following disclaimer.
+ *
+ *  2. Redistributions in binary form must reproduce the above copyright notice
+ *     and the following disclaimer in the documentation and/or other materials
+ *     provided with the distribution.
+ *
+ *  3. Neither the name of 'Energissimo' nor the names of its
+ *     contributors may be used to endorse or promote products derived from
+ *     this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * License 1.0
+ */
+
 package fr.paris.lutece.plugins.energissimo.business;
 
 /**
  * This is the business class for the object Field
- */ 
+ */
 public class DataField
 {
-    // Variables declarations 
+    // Variables declarations
     private int _nIdField;
     private String _strFieldLabel;
     private String _strFieldUnit;
     private int _nIdGroup;
     private int _nFieldOrder;
-    
-    
-       /**
-        * Returns the IdField
-        * @return The IdField
-        */ 
-    public int getId()
+
+    /**
+     * Returns the IdField
+     * 
+     * @return The IdField
+     */
+    public int getId( )
     {
         return _nIdField;
     }
-    
-       /**
-        * Sets the IdField
-        * @param nIdField The IdField
-        */ 
+
+    /**
+     * Sets the IdField
+     * 
+     * @param nIdField
+     *            The IdField
+     */
     public void setId( int nIdField )
     {
         _nIdField = nIdField;
     }
-    
-       /**
-        * Returns the FieldLabel
-        * @return The FieldLabel
-        */ 
-    public String getFieldLabel()
+
+    /**
+     * Returns the FieldLabel
+     * 
+     * @return The FieldLabel
+     */
+    public String getFieldLabel( )
     {
         return _strFieldLabel;
     }
-    
-       /**
-        * Sets the FieldLabel
-        * @param strFieldLabel The FieldLabel
-        */ 
+
+    /**
+     * Sets the FieldLabel
+     * 
+     * @param strFieldLabel
+     *            The FieldLabel
+     */
     public void setFieldLabel( String strFieldLabel )
     {
         _strFieldLabel = strFieldLabel;
     }
-    
-       /**
-        * Returns the FieldUnit
-        * @return The FieldUnit
-        */ 
-    public String getFieldUnit()
+
+    /**
+     * Returns the FieldUnit
+     * 
+     * @return The FieldUnit
+     */
+    public String getFieldUnit( )
     {
         return _strFieldUnit;
     }
-    
-       /**
-        * Sets the FieldUnit
-        * @param strFieldUnit The FieldUnit
-        */ 
+
+    /**
+     * Sets the FieldUnit
+     * 
+     * @param strFieldUnit
+     *            The FieldUnit
+     */
     public void setFieldUnit( String strFieldUnit )
     {
         _strFieldUnit = strFieldUnit;
     }
-    
-       /**
-        * Returns the IdGroup
-        * @return The IdGroup
-        */ 
-    public int getIdGroup()
+
+    /**
+     * Returns the IdGroup
+     * 
+     * @return The IdGroup
+     */
+    public int getIdGroup( )
     {
         return _nIdGroup;
     }
-    
-       /**
-        * Sets the IdGroup
-        * @param nIdGroup The IdGroup
-        */ 
+
+    /**
+     * Sets the IdGroup
+     * 
+     * @param nIdGroup
+     *            The IdGroup
+     */
     public void setIdGroup( int nIdGroup )
     {
         _nIdGroup = nIdGroup;
     }
-    
-       /**
-        * Returns the FieldOrder
-        * @return The FieldOrder
-        */ 
-    public int getFieldOrder()
+
+    /**
+     * Returns the FieldOrder
+     * 
+     * @return The FieldOrder
+     */
+    public int getFieldOrder( )
     {
         return _nFieldOrder;
     }
-    
-       /**
-        * Sets the FieldOrder
-        * @param nFieldOrder The FieldOrder
-        */ 
+
+    /**
+     * Sets the FieldOrder
+     * 
+     * @param nFieldOrder
+     *            The FieldOrder
+     */
     public void setFieldOrder( int nFieldOrder )
     {
         _nFieldOrder = nFieldOrder;
     }
- }
+}

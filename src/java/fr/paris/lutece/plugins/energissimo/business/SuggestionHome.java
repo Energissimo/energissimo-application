@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -31,7 +31,8 @@
  *
  * License 1.0
  */
- package fr.paris.lutece.plugins.energissimo.business;
+
+package fr.paris.lutece.plugins.energissimo.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
@@ -52,14 +53,16 @@ public final class SuggestionHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private SuggestionHome(  )
+    private SuggestionHome( )
     {
     }
 
     /**
      * Create an instance of the suggestion class
-     * @param suggestion The instance of the Suggestion which contains the informations to store
-     * @return The  instance of suggestion which has been created with its primary key.
+     * 
+     * @param suggestion
+     *            The instance of the Suggestion which contains the informations to store
+     * @return The instance of suggestion which has been created with its primary key.
      */
     public static Suggestion create( Suggestion suggestion )
     {
@@ -70,8 +73,10 @@ public final class SuggestionHome
 
     /**
      * Update of the suggestion which is specified in parameter
-     * @param suggestion The instance of the Suggestion which contains the data to store
-     * @return The instance of the  suggestion which has been updated
+     * 
+     * @param suggestion
+     *            The instance of the Suggestion which contains the data to store
+     * @return The instance of the suggestion which has been updated
      */
     public static Suggestion update( Suggestion suggestion )
     {
@@ -82,7 +87,9 @@ public final class SuggestionHome
 
     /**
      * Remove the suggestion whose identifier is specified in parameter
-     * @param nKey The suggestion Id
+     * 
+     * @param nKey
+     *            The suggestion Id
      */
     public static void remove( int nKey )
     {
@@ -91,39 +98,43 @@ public final class SuggestionHome
 
     /**
      * Returns an instance of a suggestion whose identifier is specified in parameter
-     * @param nKey The suggestion primary key
+     * 
+     * @param nKey
+     *            The suggestion primary key
      * @return an instance of Suggestion
      */
     public static Suggestion findByPrimaryKey( int nKey )
     {
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
 
     /**
      * Load the data of all the suggestion objects and returns them as a list
+     * 
      * @return the list which contains the data of all the suggestion objects
      */
     public static List<Suggestion> getSuggestionsList( )
     {
         return _dao.selectSuggestionsList( _plugin );
     }
-    
+
     /**
      * Load the id of all the suggestion objects and returns them as a list
+     * 
      * @return the list which contains the id of all the suggestion objects
      */
     public static List<Integer> getIdSuggestionsList( )
     {
         return _dao.selectIdSuggestionsList( _plugin );
     }
-    
+
     /**
      * Load the data of all the suggestion objects and returns them as a referenceList
+     * 
      * @return the referenceList which contains the data of all the suggestion objects
      */
     public static ReferenceList getSuggestionsReferenceList( )
     {
-        return _dao.selectSuggestionsReferenceList(_plugin );
+        return _dao.selectSuggestionsReferenceList( _plugin );
     }
 }
-

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -30,7 +30,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.energissimo.business;
 
 import javax.validation.constraints.*;
@@ -39,20 +39,21 @@ import java.io.Serializable;
 
 /**
  * This is the business class for the object Cluster
- */ 
+ */
 public class Cluster implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    // Variables declarations 
+    // Variables declarations
     private int _nId;
-    
+
     @NotEmpty( message = "#i18n{energissimo.validation.cluster.Name.notEmpty}" )
-    @Size( max = 50 , message = "#i18n{energissimo.validation.cluster.Name.size}" ) 
+    @Size( max = 50, message = "#i18n{energissimo.validation.cluster.Name.size}" )
     private String _strName;
 
     /**
      * Returns the Id
+     * 
      * @return The Id
      */
     public int getId( )
@@ -62,15 +63,18 @@ public class Cluster implements Serializable
 
     /**
      * Sets the Id
-     * @param nId The Id
-     */ 
+     * 
+     * @param nId
+     *            The Id
+     */
     public void setId( int nId )
     {
         _nId = nId;
     }
-    
+
     /**
      * Returns the Name
+     * 
      * @return The Name
      */
     public String getName( )
@@ -80,8 +84,10 @@ public class Cluster implements Serializable
 
     /**
      * Sets the Name
-     * @param strName The Name
-     */ 
+     * 
+     * @param strName
+     *            The Name
+     */
     public void setName( String strName )
     {
         _strName = strName;

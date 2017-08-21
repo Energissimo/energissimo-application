@@ -36,37 +36,36 @@ package fr.paris.lutece.plugins.energissimo.business;
 
 import fr.paris.lutece.test.LuteceTestCase;
 
-
 public class ClusterBusinessTest extends LuteceTestCase
 {
     private final static String NAME1 = "Name1";
     private final static String NAME2 = "Name2";
 
-    public void testBusiness(  )
+    public void testBusiness( )
     {
         // Initialize an object
-        Cluster cluster = new Cluster();
+        Cluster cluster = new Cluster( );
         cluster.setName( NAME1 );
 
         // Create test
         ClusterHome.create( cluster );
         Cluster clusterStored = ClusterHome.findByPrimaryKey( cluster.getId( ) );
-        assertEquals( clusterStored.getName() , cluster.getName( ) );
+        assertEquals( clusterStored.getName( ), cluster.getName( ) );
 
         // Update test
         cluster.setName( NAME2 );
         ClusterHome.update( cluster );
         clusterStored = ClusterHome.findByPrimaryKey( cluster.getId( ) );
-        assertEquals( clusterStored.getName() , cluster.getName( ) );
+        assertEquals( clusterStored.getName( ), cluster.getName( ) );
 
         // List test
-        ClusterHome.getClustersList();
+        ClusterHome.getClustersList( );
 
         // Delete test
         ClusterHome.remove( cluster.getId( ) );
         clusterStored = ClusterHome.findByPrimaryKey( cluster.getId( ) );
         assertNull( clusterStored );
-        
+
     }
 
 }

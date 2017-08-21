@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
- 
+
 package fr.paris.lutece.plugins.energissimo.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
@@ -45,53 +45,71 @@ public interface ISuggestionDAO
 {
     /**
      * Insert a new record in the table.
-     * @param suggestion instance of the Suggestion object to insert
-     * @param plugin the Plugin
+     * 
+     * @param suggestion
+     *            instance of the Suggestion object to insert
+     * @param plugin
+     *            the Plugin
      */
     void insert( Suggestion suggestion, Plugin plugin );
 
     /**
      * Update the record in the table
-     * @param suggestion the reference of the Suggestion
-     * @param plugin the Plugin
+     * 
+     * @param suggestion
+     *            the reference of the Suggestion
+     * @param plugin
+     *            the Plugin
      */
     void store( Suggestion suggestion, Plugin plugin );
 
     /**
      * Delete a record from the table
-     * @param nKey The identifier of the Suggestion to delete
-     * @param plugin the Plugin
+     * 
+     * @param nKey
+     *            The identifier of the Suggestion to delete
+     * @param plugin
+     *            the Plugin
      */
     void delete( int nKey, Plugin plugin );
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Load the data from the table
-     * @param nKey The identifier of the suggestion
-     * @param plugin the Plugin
+     * 
+     * @param nKey
+     *            The identifier of the suggestion
+     * @param plugin
+     *            the Plugin
      * @return The instance of the suggestion
      */
     Suggestion load( int nKey, Plugin plugin );
 
     /**
      * Load the data of all the suggestion objects and returns them as a list
-     * @param plugin the Plugin
+     * 
+     * @param plugin
+     *            the Plugin
      * @return The list which contains the data of all the suggestion objects
      */
     List<Suggestion> selectSuggestionsList( Plugin plugin );
-    
+
     /**
      * Load the id of all the suggestion objects and returns them as a list
-     * @param plugin the Plugin
+     * 
+     * @param plugin
+     *            the Plugin
      * @return The list which contains the id of all the suggestion objects
      */
     List<Integer> selectIdSuggestionsList( Plugin plugin );
-    
+
     /**
      * Load the data of all the suggestion objects and returns them as a referenceList
-     * @param plugin the Plugin
+     * 
+     * @param plugin
+     *            the Plugin
      * @return The referenceList which contains the data of all the suggestion objects
      */
     ReferenceList selectSuggestionsReferenceList( Plugin plugin );

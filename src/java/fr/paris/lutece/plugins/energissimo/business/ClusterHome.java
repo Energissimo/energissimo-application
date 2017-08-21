@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2017 Energissimo authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -13,7 +13,7 @@
  *     and the following disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
- *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
+ *  3. Neither the name of 'Energissimo' nor the names of its
  *     contributors may be used to endorse or promote products derived from
  *     this software without specific prior written permission.
  *
@@ -31,7 +31,8 @@
  *
  * License 1.0
  */
- package fr.paris.lutece.plugins.energissimo.business;
+
+package fr.paris.lutece.plugins.energissimo.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
@@ -52,14 +53,16 @@ public final class ClusterHome
     /**
      * Private constructor - this class need not be instantiated
      */
-    private ClusterHome(  )
+    private ClusterHome( )
     {
     }
 
     /**
      * Create an instance of the cluster class
-     * @param cluster The instance of the Cluster which contains the informations to store
-     * @return The  instance of cluster which has been created with its primary key.
+     * 
+     * @param cluster
+     *            The instance of the Cluster which contains the informations to store
+     * @return The instance of cluster which has been created with its primary key.
      */
     public static Cluster create( Cluster cluster )
     {
@@ -70,8 +73,10 @@ public final class ClusterHome
 
     /**
      * Update of the cluster which is specified in parameter
-     * @param cluster The instance of the Cluster which contains the data to store
-     * @return The instance of the  cluster which has been updated
+     * 
+     * @param cluster
+     *            The instance of the Cluster which contains the data to store
+     * @return The instance of the cluster which has been updated
      */
     public static Cluster update( Cluster cluster )
     {
@@ -82,7 +87,9 @@ public final class ClusterHome
 
     /**
      * Remove the cluster whose identifier is specified in parameter
-     * @param nKey The cluster Id
+     * 
+     * @param nKey
+     *            The cluster Id
      */
     public static void remove( int nKey )
     {
@@ -91,39 +98,43 @@ public final class ClusterHome
 
     /**
      * Returns an instance of a cluster whose identifier is specified in parameter
-     * @param nKey The cluster primary key
+     * 
+     * @param nKey
+     *            The cluster primary key
      * @return an instance of Cluster
      */
     public static Cluster findByPrimaryKey( int nKey )
     {
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
 
     /**
      * Load the data of all the cluster objects and returns them as a list
+     * 
      * @return the list which contains the data of all the cluster objects
      */
     public static List<Cluster> getClustersList( )
     {
         return _dao.selectClustersList( _plugin );
     }
-    
+
     /**
      * Load the id of all the cluster objects and returns them as a list
+     * 
      * @return the list which contains the id of all the cluster objects
      */
     public static List<Integer> getIdClustersList( )
     {
         return _dao.selectIdClustersList( _plugin );
     }
-    
+
     /**
      * Load the data of all the cluster objects and returns them as a referenceList
+     * 
      * @return the referenceList which contains the data of all the cluster objects
      */
     public static ReferenceList getClustersReferenceList( )
     {
-        return _dao.selectClustersReferenceList(_plugin );
+        return _dao.selectClustersReferenceList( _plugin );
     }
 }
-

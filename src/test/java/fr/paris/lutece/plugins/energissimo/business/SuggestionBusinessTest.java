@@ -36,14 +36,13 @@ package fr.paris.lutece.plugins.energissimo.business;
 
 import fr.paris.lutece.test.LuteceTestCase;
 
-
 public class SuggestionBusinessTest extends LuteceTestCase
 {
 
-    public void testBusiness(  )
+    public void testBusiness( )
     {
         // Initialize an object
-        Suggestion suggestion = new Suggestion();
+        Suggestion suggestion = new Suggestion( );
 
         // Create test
         SuggestionHome.create( suggestion );
@@ -54,13 +53,13 @@ public class SuggestionBusinessTest extends LuteceTestCase
         suggestionStored = SuggestionHome.findByPrimaryKey( suggestion.getId( ) );
 
         // List test
-        SuggestionHome.getSuggestionsList();
+        SuggestionHome.getSuggestionsList( );
 
         // Delete test
         SuggestionHome.remove( suggestion.getId( ) );
         suggestionStored = SuggestionHome.findByPrimaryKey( suggestion.getId( ) );
         assertNull( suggestionStored );
-        
+
     }
 
 }
